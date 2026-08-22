@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A demo autonomous email-to-action agent." />
+    <title>Relay | Email-to-Action Agent</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Relay home"><span class="brand-mark">R</span> relay</a>
+      <div class="environment"><span></span> Sandbox workspace</div>
+      <button class="secondary-button" id="resetButton" type="button">Reset demo</button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AUTONOMOUS OPERATIONS</p>
+          <h1>Email in. <em>Action out.</em></h1>
+          <p class="hero-copy">Relay classifies incoming operational email, chooses a safe next step, and leaves a complete, reviewable audit trail.</p>
+        </div>
+        <div class="run-panel">
+          <div><span class="status-dot"></span><strong id="runStatus">Ready to process</strong><p id="runSubtext">6 emails waiting in the inbox</p></div>
+          <button class="primary-button" id="processButton" type="button">Run agent <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Processing summary">
+        <article><span>Inbox processed</span><strong id="processedMetric">0 / 6</strong></article>
+        <article><span>Autonomous actions</span><strong id="actionMetric">0</strong></article>
+        <article><span>Needs review</span><strong id="reviewMetric">0</strong></article>
+        <article><span>Audit records</span><strong id="auditMetric">0</strong></article>
+      </section>
+
+      <section class="workspace">
+        <div class="panel inbox-panel">
+          <div class="panel-heading"><div><p class="eyebrow">INBOX</p><h2>Today’s queue</h2></div><span class="count-badge" id="queueCount">6</span></div>
+          <div class="email-list" id="emailList" aria-live="polite"></div>
+        </div>
+
+        <div class="panel detail-panel">
+          <div class="panel-heading"><div><p class="eyebrow">AGENT DECISION</p><h2 id="detailTitle">Select an email</h2></div><span class="decision-state" id="decisionState">Waiting</span></div>
+          <div id="detailContent" class="empty-state">
+            <div class="empty-icon">✦</div>
+            <h3>Inbox is ready</h3>
+            <p>Choose an email to inspect it, or run the agent to classify and action the entire queue.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="audit-section">
+        <div class="section-heading"><div><p class="eyebrow">TRACEABILITY</p><h2>Audit trail</h2></div><p>Every classification, action, and confidence score is recorded.</p></div>
+        <div class="audit-table-wrap"><table><thead><tr><th>Time</th><th>Email</th><th>Intent</th><th>Action</th><th>Confidence</th></tr></thead><tbody id="auditBody"><tr class="no-audit"><td colspan="5">Run the agent to create an immutable decision trail.</td></tr></tbody></table></div>
+      </section>
+    </main>
+
+    <footer>Relay demo · Synthetic data only · Built for the Supervity FDE assessment</footer>
+    <script src="app.js"></script>
+  </body>
+</html>
